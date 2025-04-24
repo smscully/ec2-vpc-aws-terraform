@@ -26,7 +26,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GZlLUc0SY0Vusj31z0ji-8" value="igw" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.internet_gateway;" parent="1" vertex="1">
-          <mxGeometry x="250" y="247" width="45" height="45" as="geometry" />
+          <mxGeometry x="250" y="248" width="43" height="43" as="geometry" />
         </mxCell>
         <mxCell id="C8UU4FP-VCX7B_eMEScx-15" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="C8UU4FP-VCX7B_eMEScx-1" target="C8UU4FP-VCX7B_eMEScx-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -43,7 +43,7 @@
         <mxCell id="C8UU4FP-VCX7B_eMEScx-3" value="network-acl-pub" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.network_access_control_list;" parent="C8UU4FP-VCX7B_eMEScx-4" vertex="1">
           <mxGeometry x="211" y="79" width="41" height="41" as="geometry" />
         </mxCell>
-        <mxCell id="8FKhFlXcBXJuAcLEcx28-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="C8UU4FP-VCX7B_eMEScx-5" target="GZlLUc0SY0Vusj31z0ji-8">
+        <mxCell id="8FKhFlXcBXJuAcLEcx28-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="C8UU4FP-VCX7B_eMEScx-5" target="GZlLUc0SY0Vusj31z0ji-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="C8UU4FP-VCX7B_eMEScx-5" value="Users" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.users;" parent="1" vertex="1">
