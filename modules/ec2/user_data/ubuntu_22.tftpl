@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Regresh package index, install latest versions of packages, and delete obsolete packages
+apt update -y
+apt upgrade -y
+apt autoremove
+
+# Configure unattended-upgrades
+apt install unattended-upgrades -y
+systemctl is-enabled --quiet unattended-upgrades || systemctl enable unattended-upgrades
+systemctl is-active --quiet unattended-upgrades || systemctl start unattended-upgrades
+# Attempt to auto fix if issues with upgrades
+sed -i '/\/\/Unattended-Upgrade::AutoFixInterruptedDpkg "true";/c\Unattended-Upgrade::AutoFixInterruptedDpkg "true";' /etc/apt/apt.conf.d/50unattended-upgrades
+# Remove unused dependencies
+sed -i '/\/\/Unattended-Upgrade::Remove-Unused-Dependencies "false";/c\Unattended-Upgrade::Remove-Unused-Dependencies "true";' /etc/apt/apt.conf.d/50unattended-upgrades
+# Reboot if required for upgrade
+sed -i '/\/\/Unattended-Upgrade::Automatic-Reboot "false";/c\Unattended-Upgrade::Automatic-Reboot "true";' /etc/apt/apt.conf.d/50unattended-upgrades
+# Reboot even if users are logged in
+sed -i '/\/\/Unattended-Upgrade::Automatic-Reboot-WithUsers "true";/c\Unattended-Upgrade::Automatic-Reboot-WithUsers "true";' /etc/apt/apt.conf.d/50unattended-upgrades
+# Set reboot time to 03:00 AM
+sed -i '/\/\/Unattended-Upgrade::Automatic-Reboot-Time "02:00";/c\Unattended-Upgrade::Automatic-Reboot-Time "03:00";' /etc/apt/apt.conf.d/50unattended-upgrades
+systemctl restart unattended-upgrades
+
+# Create SSH user, copy SSH keys and known_hosts, and add sudoers permissions
+adduser ssh_ubuntu
+usermod -amG sudoers ssh_ubuntu
+cp -r /home/ubuntu/.ssh /home/ssh_ubuntu/
+chown -R ssh_ubuntu:ssh_ubuntu /home/ssh_ubuntu/.ssh
+echo "ssh_ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ssh_ubuntu
+
+# Update sshd_config settings to increase security
+echo "Port ${ssh_port}" >> /etc/ssh/sshd_config
+echo -e "AllowUsers ubuntu@${ssh_ip} ssh_ubuntu@${ssh_ip}" >> /etc/ssh/sshd_config
+echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+systemctl restart sshd
+
+# Configure UFW
+ufw allow from ${ssh_ip} proto tcp to any port ${ssh_port}
+ufw --force enable 
+
+# Enable and start AppArmor
+systemctl is-enabled --quiet apparmor || systemctl enable apparmor
+systemctl is-active --quiet apparmor || systemctl start apparmor
+
+# Set hostname and local DNS
+hostnamectl set-hostname ec2
+echo "127.0.0.10 ec2" >> /etc/hosts
+
+# Install and configure Fail2ban
+apt install fail2ban -y
+systemctl is-enabled --quiet fail2ban || systemctl enable fail2ban
+systemctl is-active --quiet fail2ban || systemctl start fail2ban
+# SSH jail
+cat > /etc/fail2ban/jail.d/sshd.local << EOF
+[sshd]
+enabled = true
+port = ${ssh_port} 
+backend = systemd
+EOF
+systemctl restart fail2ban
