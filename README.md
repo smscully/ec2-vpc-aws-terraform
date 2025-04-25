@@ -23,7 +23,7 @@ The AWS User Data Bash script installs and configures the security-related softw
 |Automatic security updates|unattended-upgrades|dnf-automatic|
 |SSH user with sudo permissions|ssh_ubuntu|ssh_al|
 |sshd_config updates to increase security|-|-|
-|Firewall to limit ports to 80, 443, and custom SSH|UFW|nftables|
+|Firewall to limit port to custom SSH|UFW|nftables|
 |Linux Security Modules|AppArmor|SELinux|
 |Fail2ban (with SSH jail)|-|-|
 
