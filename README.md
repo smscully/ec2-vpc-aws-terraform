@@ -12,6 +12,7 @@ The root module [main.tf](./main.tf) calls the child modules described below, se
 
 ### `networking` Module
 Creates an AWS network infrastructure consisting of a VPC, internet gateway (IGW), NAT gateways, public and private subnets, route tables for each subnet, network access control lists (NACL), and security groups.
+
 ### `ec2` Module
 Deploys AWS EC2 instances from images listed in datasources.tf, runs an AWS User Data script to apply security measures, and uploads public keys to enable access to each instance.
 

@@ -1,5 +1,5 @@
 ########################################
-# Main Module Outputs
+# Root Module Outputs
 ########################################
 output "networking_module" {
   value = module.networking
