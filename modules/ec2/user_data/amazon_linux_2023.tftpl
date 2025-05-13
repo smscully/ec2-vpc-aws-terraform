@@ -79,8 +79,6 @@ nft list ruleset > /etc/sysconfig/nftables.conf
 # Set SELinux to enforcing mode
 sed -i "s/^SELINUX=.*$/SELINUX=enforcing/" /etc/selinux/config
 setenforce 1
-# Required to support nginx reverse proxy
-setsebool -P httpd_can_network_relay 1
 # Add SSH port to SELinux policy
 semanage port -a -t ssh_port_t -p tcp ${ssh_port} 
 
