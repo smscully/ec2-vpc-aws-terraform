@@ -173,9 +173,10 @@ instances = {
     vpc_security_group_ids = [
       "security-group-ec2"
     ]
-    subnet_id = "subnet-pub-1a"
-    key_name  = "key-pair-01"
-    ssh_ip    = "0.0.0.0/0"
-    ssh_port  = "2222"
+    subnet_id   = "subnet-pub-1a"
+    key_name    = "key-pair-01"
+    http_tokens = "required"
+    ssh_ip      = "0.0.0.0/0"
+    ssh_port    = "2222"
   }
 }

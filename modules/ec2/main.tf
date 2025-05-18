@@ -61,6 +61,10 @@ resource "aws_instance" "instance" {
     volume_size = each.value.volume_size
   }
 
+  metadata_options {
+    http_tokens = each.value.http_tokens
+  }
+
   tags = {
     name        = each.key
     project     = var.project

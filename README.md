@@ -64,6 +64,7 @@ While most of the variables correspond to standard AWS Terraform module attribut
 + EC2 Module
   + public_key: The location on the local machine of the SSH public key.
   + ami: Reference to the Amazon Machine Image. The module's datasources.tf file contains two possible AMIs, Ubuntu 22 (ubuntu_22) or Amazon Linux 2023 (amazon_linux_2023).
+  + http_tokens: Two values are valid: optional/required. Following best security practices, "required" should be used, which requires the use of Instance Metadata Service Version 2 (IMDSv2).
   + ssh_ip: The SSH IPv4 address that will be allowed by OpenSSH, Fail2ban, and the instance firewall. This value must correspond with the SSH IPv4 address allowed by the Security Groups and NACLs. The value is currently set to "0.0.0.0/0" but for increased security should be modified throughout to a more specific address.
   + ssh_port: The SSH port that will be allowed by OpenSSH, Fail2ban, and the instance firewall. This value must correspond with the SSH port allowed by the Security Groups and NACLs. 
 

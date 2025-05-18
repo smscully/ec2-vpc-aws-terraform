@@ -33,6 +33,7 @@ variable "instances" {
     vpc_security_group_ids      = list(string)
     subnet_id                   = string
     key_name                    = string
+    http_tokens                 = string
     ssh_ip                      = string
     ssh_port                    = string
   }))
