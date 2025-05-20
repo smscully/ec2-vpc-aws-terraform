@@ -78,7 +78,7 @@ terraform apply -var-file="jenkins-ubuntu22.tfvars"
 ```
 
 ### Step 5. Access the EC2 Instance via SSH
-To access the Ubuntu 22 instance, enter the command below in the shell. Change the username to ssh_al if using an Amazon Linux 2023. The IP address of the EC2 instance is displayed as an output of the Terraform script.
+To access the Ubuntu 22 instance, enter the command below in the shell. Change the username to ssh_al if using Amazon Linux 2023. The IP address of the EC2 instance is displayed as an output of the Terraform script.
 
 ```bash
 ssh -i ~/.ssh/aws-test-env-ed25519 -p 2222 ssh_ubuntu@[instance-ip]
