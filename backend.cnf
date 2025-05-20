@@ -1,5 +1,5 @@
 bucket = "your-s3-bucket"
-key = "terraform-vpc-ec2-aws"
+key = "ec2-vpc-aws-terraform"
 region = "us-east-1"
 dynamodb_table = "your-dynamodb-table"
 encrypt = true
